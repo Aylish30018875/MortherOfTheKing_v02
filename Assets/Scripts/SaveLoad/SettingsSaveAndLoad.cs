@@ -10,6 +10,7 @@ public class SettingsSaveAndLoad : MonoBehaviour
     [SerializeField] SettingsSaveData _saveData;
     [SerializeField] SettingsSliderHandler _sliderHandler;
     [SerializeField] AudioMixer _audioMixer;
+    [SerializeField] DropDownManager _dropDownManager;
     //Where the settings data will be saved to and loaded from
     [SerializeField] string _filePath;// = $"{Application.persistentDataPath}/Settings.json";
 
@@ -28,9 +29,9 @@ public class SettingsSaveAndLoad : MonoBehaviour
         _saveData.dialogueVolume = (int)_sliderHandler.dialogueVolumeSlider.value;
         _saveData.cutsceneVolume = (int)_sliderHandler.cutsceneVolumeSlider.value;
         //Get the text size and colour data and store it in the _saveData object
-        _saveData.textSize = 1;
-        _saveData.textColour = 1;
-        _saveData.buttonColour = 1;
+        _saveData.textSize = _dropDownManager.textSize;
+        _saveData.textColour = _dropDownManager.textColour;
+        _saveData.buttonColour = _dropDownManager.buttonColour;
 
 
        
@@ -60,6 +61,7 @@ public class SettingsSaveAndLoad : MonoBehaviour
 
     void SendDataToGame()
     {
+        //Send volume data
         _sliderHandler.masterVolumeSlider.value = _saveData.masterVolume;
         _sliderHandler.menuMusicSlider.value = _saveData.menuVolume;
         _sliderHandler.ambientMusicSlider.value = _saveData.ambientVolume;
@@ -68,6 +70,10 @@ public class SettingsSaveAndLoad : MonoBehaviour
         _sliderHandler.enemySoundEffectsSlider.value = _saveData.enemySoundEffects;
         _sliderHandler.dialogueVolumeSlider.value = _saveData.dialogueVolume;
         _sliderHandler.cutsceneVolumeSlider.value = _saveData.cutsceneVolume;
+        //Send size & colour data
+        _dropDownManager.textSize = _saveData.textSize;
+        _dropDownManager.textColour = _saveData.textColour;
+        _dropDownManager.buttonColour = _saveData.buttonColour;
     }
     public void LoadSettings()
     {
