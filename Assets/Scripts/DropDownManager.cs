@@ -29,7 +29,7 @@ public class DropDownManager : MonoBehaviour
 
     public void GetTextColour(int value)
     {
-        textColour = value;
+        textColourDropDown.value = value;
     }
     public void GetTextSize(int value)
     {
