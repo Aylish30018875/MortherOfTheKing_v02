@@ -24,10 +24,10 @@ public static class LoadFromSave
                 _fontInfo.scale = 1; //the small option
                 break;
             case 1:
-                _fontInfo.scale = 1.25f; //the medium/default option
+                _fontInfo.scale = 1.5f; //the medium/default option
                 break;
             case 2:
-                _fontInfo.scale = 1.5f; //the big option
+                _fontInfo.scale = 2.25f; //the big option
                 break;
             default:
                 _fontInfo.scale = 0.5f; //just to make it obvious that something went wrong
